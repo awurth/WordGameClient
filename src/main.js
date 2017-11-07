@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
 import './resources'
+import './directives/Dropdown'
 
 Vue.config.productionTip = false
 
