@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import GuestMiddleware from './middleware/GuestMiddleware'
+
 import Home from '@/components/Home'
 import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
@@ -16,11 +19,13 @@ export default new Router({
     }, {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
+      beforeEnter: GuestMiddleware
     }, {
       path: '/register',
       name: 'Register',
-      component: Register
+      component: Register,
+      beforeEnter: GuestMiddleware
     }, {
       path: '*',
       redirect: '/'
