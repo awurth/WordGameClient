@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1 class="ui header">Home</h1>
+    <div class="ui container">
+      <h1 class="ui center aligned dividing header">Home</h1>
+    </div>
   </div>
 </template>
 
