@@ -7,6 +7,8 @@ import Home from '@/components/Home'
 import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 
+import Account from './account'
+
 Vue.use(Router)
 
 export default new Router({
@@ -26,7 +28,9 @@ export default new Router({
       name: 'Register',
       component: Register,
       beforeEnter: GuestMiddleware
-    }, {
+    },
+    Account,
+    {
       path: '*',
       redirect: '/'
     }
