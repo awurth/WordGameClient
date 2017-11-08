@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 Vue.directive('dropdown', {
-  inserted: function (el) {
+  inserted: el => {
     window.$(el).dropdown()
   }
 })
