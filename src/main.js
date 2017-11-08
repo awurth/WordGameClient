@@ -6,7 +6,7 @@ import App from './App'
 import router from './router'
 
 import './resources'
-import './directives/Dropdown'
+import './directives'
 
 window.$ = window.jQuery = jQuery
 
