@@ -1,9 +1,14 @@
+import jQuery from 'jquery'
+import 'semantic-ui/dist/semantic'
+
 import Vue from 'vue'
 import App from './App'
 import router from './router'
 
 import './resources'
 import './directives/Dropdown'
+
+window.$ = window.jQuery = jQuery
 
 Vue.config.productionTip = false
 
