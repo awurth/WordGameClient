@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Config from '@/config'
+import EventHub from '@/util/EventHub'
 
 export default {
   user: {
@@ -49,7 +50,11 @@ export default {
     context.$http.post(Config.OAuth.token.URL, credentials).then(response => {
       this.setTokens(response.body.access_token, response.body.refresh_token, response.body.expires_in)
 
-      this.getUser()
+      this.getUser().then(() => {
+        EventHub.$emit('auth')
+      })
+
+      this.user.authenticated = true
 
       if (redirect) {
         context.$router.push(redirect)
