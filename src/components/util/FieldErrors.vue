@@ -1,5 +1,5 @@
 <template>
-  <div v-if="errors.length" class="ui error message">
+  <div v-if="errors && errors.length" class="ui error message">
     <ul v-if="Array.isArray(errors) && errors.length > 1">
       <li v-for="error in errors">{{ error }}</li>
     </ul>
