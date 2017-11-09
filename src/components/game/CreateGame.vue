@@ -58,10 +58,9 @@ export default {
     },
     submit () {
       Game.save({ game_game: this.game }).then(() => {
-        this.$router.push({ name: 'Home' })
+        this.$router.push({ name: 'AccountGames' })
       }, response => {
         this.errors = FormErrors.resolve(response.body)
-        console.log(this.errors)
       })
     }
   },
