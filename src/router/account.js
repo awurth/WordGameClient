@@ -1,7 +1,7 @@
 import AuthMiddleware from './middleware/AuthMiddleware'
 
 import Account from '@/components/account/Account'
-import Home from '@/components/Home'
+import Games from '@/components/account/Games'
 
 export default {
   path: '/account',
@@ -12,7 +12,7 @@ export default {
     {
       path: 'games',
       name: 'AccountGames',
-      component: Home
+      component: Games
     }
   ]
 }
