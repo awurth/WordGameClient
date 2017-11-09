@@ -5,6 +5,9 @@
     </router-link>
     <div class="right menu" v-if="user.authenticated">
       <div class="item">
+        <router-link :to="{ name: 'CreateGame' }" class="ui circular button">Play</router-link>
+      </div>
+      <div class="item">
         <button @click="logout()" class="ui teal circular button">Logout</button>
       </div>
     </div>
