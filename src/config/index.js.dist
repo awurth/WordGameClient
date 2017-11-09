@@ -1,0 +1,16 @@
+const API_URL = ''
+
+export default {
+  API: {
+    URL: API_URL
+  },
+  OAuth: {
+    client: {
+      id: '',
+      secret: ''
+    },
+    token: {
+      URL: API_URL + ''
+    }
+  }
+}

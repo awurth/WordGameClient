@@ -2,6 +2,7 @@
 node_modules/
 dist/
 static/semantic/
+src/config/index.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

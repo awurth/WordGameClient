@@ -1,10 +1,5 @@
 import Vue from 'vue'
-
-const API_URL = 'http://localhost/findthewords-symfony/web/app_dev.php'
-const TOKEN_URL = API_URL + '/oauth/v2/token'
-// const SIGNUP_URL = API_URL + '/users'
-const CLIENT_ID = '1_62o6a6q1a4kkoc0g0wcco4w04so8g4ko4kcwk4wowkow48c4k4'
-const CLIENT_SECRET = '3terzhc7wnoko4wkgk48o0oww04gk0s8owkgog000gk4k88cgg'
+import Config from '@/config'
 
 export default {
   user: {
@@ -24,10 +19,10 @@ export default {
   },
   login (context, credentials, redirect) {
     credentials.grant_type = 'password'
-    credentials.client_id = CLIENT_ID
-    credentials.client_secret = CLIENT_SECRET
+    credentials.client_id = Config.OAuth.client.id
+    credentials.client_secret = Config.OAuth.client.secret
 
-    context.$http.post(TOKEN_URL, credentials).then(response => {
+    context.$http.post(Config.OAuth.token.URL, credentials).then(response => {
       this.setTokens(response.body.access_token, response.body.refresh_token, response.body.expires_in)
 
       this.user.authenticated = true
@@ -43,16 +38,15 @@ export default {
     let data = {
       grant_type: 'refresh_token',
       refresh_token: this.getRefreshToken(),
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET
+      client_id: Config.OAuth.client.id,
+      client_secret: Config.OAuth.client.secret
     }
 
-    return Vue.http.post(TOKEN_URL, data).then(response => {
+    return Vue.http.post(Config.OAuth.token.URL, data).then(response => {
       this.setTokens(response.body.access_token, response.body.refresh_token, response.body.expires_in)
 
       this.user.authenticated = true
-    }, response => {
-      console.log(response)
+    }, () => {
       this.logout()
     })
   },
