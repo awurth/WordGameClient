@@ -9,6 +9,7 @@ import Auth from '@/security'
 import '@/resources'
 import '@/directives'
 import '@/filters'
+import '@/components/util'
 
 window.$ = window.jQuery = jQuery
 
