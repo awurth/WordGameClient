@@ -3,14 +3,38 @@ import Config from '@/config'
 
 export default {
   user: {
+    id: null,
+    username: null,
     authenticated: false
+  },
+  init () {
+    if (this.check()) {
+      return this.getUser(true)
+    }
+
+    return Promise.resolve()
+  },
+  getUser (update = false) {
+    if (update || this.user.id === null || this.user.username === null) {
+      return Vue.http.get(Config.API.URL + '/user').then(response => {
+        let user = response.body
+        this.user.id = user.id
+        this.user.username = user.username
+      }, () => {
+        this.user.id = null
+        this.user.username = null
+      })
+    }
+
+    return Promise.resolve(this.user)
   },
   check () {
     if (this.getAccessToken()) {
-      this.user.authenticated = Date.now() < this.getTokenCreationTimestamp() + (this.getTokenExpirationTime() * 1000)
+      /* this.user.authenticated = Date.now() < this.getTokenCreationTimestamp() + (this.getTokenExpirationTime() * 1000)
       if (!this.user.authenticated) {
         this.refresh()
-      }
+      } */
+      this.user.authenticated = true
     } else {
       this.logout()
     }
@@ -25,7 +49,7 @@ export default {
     context.$http.post(Config.OAuth.token.URL, credentials).then(response => {
       this.setTokens(response.body.access_token, response.body.refresh_token, response.body.expires_in)
 
-      this.user.authenticated = true
+      this.getUser()
 
       if (redirect) {
         context.$router.push(redirect)
