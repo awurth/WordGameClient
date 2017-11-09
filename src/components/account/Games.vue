@@ -19,7 +19,7 @@
             <td><a v-for="subject in game.subjects" class="teal ui label">{{ subject.name }}</a></td>
             <td>{{ game.created_at | calendar }}</td>
             <td class="right aligned">
-              <button class="mini red ui circular labeled icon button"><i class="trash icon"></i> Delete</button>
+              <button @click="deleteGame(game.id)" class="mini red ui circular labeled icon button"><i class="trash icon"></i> Delete</button>
             </td>
           </tr>
         </tbody>
@@ -39,10 +39,20 @@ export default {
       games: []
     }
   },
+  methods: {
+    loadGames () {
+      Game.ofUser({ id: Auth.user.id }).then(response => {
+        this.games = response.body
+      })
+    },
+    deleteGame (id) {
+      Game.delete({ id: id }).then(() => {
+        this.loadGames()
+      })
+    }
+  },
   mounted () {
-    Game.ofUser({ id: Auth.user.id }).then(response => {
-      this.games = response.body
-    })
+    this.loadGames()
   }
 }
 </script>
