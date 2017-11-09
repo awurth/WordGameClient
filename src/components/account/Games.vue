@@ -2,9 +2,9 @@
   <div class="account-games">
     <div class="ui container">
       <h1 class="ui dividing center aligned header">My games</h1>
-      <table v-if="games.length" class="ui table">
+      <table v-if="games.length" class="ui celled table">
         <thead>
-          <tr>
+          <tr class="center aligned">
             <th>#</th>
             <th>Name</th>
             <th>Subjects</th>
@@ -12,13 +12,15 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="game in games">
-            <td>{{ game.id }}</td>
+        <tbody class="center aligned">
+          <tr v-for="(game, index) in games">
+            <td>{{ index + 1 }}</td>
             <td>{{ game.name }}</td>
-            <td>{{ game.subjects }}</td>
-            <td>{{ game.created_at }}</td>
-            <td></td>
+            <td><a v-for="subject in game.subjects" class="teal ui label">{{ subject.name }}</a></td>
+            <td>{{ game.created_at | calendar }}</td>
+            <td class="right aligned">
+              <button class="mini red ui circular labeled icon button"><i class="trash icon"></i> Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -38,10 +40,8 @@ export default {
     }
   },
   mounted () {
-    Auth.getUser().then(() => {
-      Game.ofUser({ id: Auth.user.id }).then(response => {
-        this.games = response.body
-      })
+    Game.ofUser({ id: Auth.user.id }).then(response => {
+      this.games = response.body
     })
   }
 }
