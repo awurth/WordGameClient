@@ -8,6 +8,7 @@ import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 
 import Account from './account'
+import Game from './game'
 
 Vue.use(Router)
 
@@ -30,6 +31,7 @@ export default new Router({
       beforeEnter: GuestMiddleware
     },
     Account,
+    Game,
     {
       path: '*',
       redirect: '/'
