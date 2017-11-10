@@ -3,18 +3,20 @@
     <router-link :to="{ name: 'Home' }" class="header item">
       <img src="../assets/logo.png" alt="Logo"> Find The Words
     </router-link>
-    <div class="right menu" v-if="user.authenticated">
+    <div v-if="user.authenticated" class="right menu">
       <div class="item">
-        <router-link :to="{ name: 'CreateGame' }" class="ui circular button">Play</router-link>
+        <router-link :to="{ name: 'CreateGame' }" class="teal ui circular button">New game</router-link>
       </div>
-      <div class="item">
-        <router-link :to="{ name: 'AccountGames' }" class="ui circular button">Games</router-link>
-      </div>
-      <div class="item">
-        <button @click="logout()" class="ui teal circular button">Logout</button>
+      <div class="ui dropdown item" v-dropdown>
+        {{ user.username }}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <router-link :to="{ name: 'AccountGames' }" class="item">Games</router-link>
+          <a @click="logout()" class="item">Logout</a>
+        </div>
       </div>
     </div>
-    <div class="right menu" v-if="!user.authenticated">
+    <div v-if="!user.authenticated" class="right menu">
       <div class="item">
         <router-link :to="{ name: 'Login' }" class="ui circular button">Login</router-link>
       </div>
