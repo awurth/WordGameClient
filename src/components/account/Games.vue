@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     loadGames () {
-      Game.ofUser({ id: Auth.user.id }).then(response => {
+      Game.ofUser({ id: Auth.user.id, order: 'desc' }).then(response => {
         this.games = response.body
       })
     },
