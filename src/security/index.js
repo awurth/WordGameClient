@@ -84,7 +84,12 @@ export default {
     window.localStorage.removeItem('oauth.refresh_token')
     window.localStorage.removeItem('oauth.created_at')
     window.localStorage.removeItem('oauth.expires_in')
+
     this.user.authenticated = false
+    this.user.id = null
+    this.user.username = null
+
+    EventHub.$emit('auth')
   },
   setTokens (access, refresh, expiration) {
     window.localStorage.setItem('oauth.access_token', access)
