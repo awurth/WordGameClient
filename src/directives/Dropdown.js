@@ -1,7 +1,10 @@
 import Vue from 'vue'
 
+let dropdown = el => {
+  window.$(el).dropdown()
+}
+
 Vue.directive('dropdown', {
-  inserted: el => {
-    window.$(el).dropdown()
-  }
+  inserted: dropdown,
+  update: dropdown
 })
