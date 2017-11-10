@@ -19,6 +19,7 @@
             <td><a v-for="subject in game.subjects" class="teal ui label">{{ subject.name }}</a></td>
             <td>{{ game.created_at | calendar }}</td>
             <td class="right aligned">
+              <router-link :to="{ name: 'PlayGame', params: { id: game.id } }" class="mini teal ui circular labeled icon button"><i class="game icon"></i> Join</router-link>
               <button @click="deleteGame(game.id)" class="mini red ui circular labeled icon button"><i class="trash icon"></i> Delete</button>
             </td>
           </tr>
