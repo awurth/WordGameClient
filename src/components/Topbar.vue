@@ -11,8 +11,8 @@
         {{ user.username }}
         <i class="dropdown icon"></i>
         <div class="menu">
-          <router-link :to="{ name: 'AccountGames' }" class="item">Games</router-link>
-          <a @click="logout()" class="item">Logout</a>
+          <router-link :to="{ name: 'AccountGames' }" class="item"><i class="game icon"></i> My games</router-link>
+          <a @click="logout()" class="item"><i class="power icon"></i> Logout</a>
         </div>
       </div>
     </div>
