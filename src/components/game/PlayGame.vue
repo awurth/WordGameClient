@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Auth from '@/security'
+import Security from '@/security'
 import Game from '@/resources/Game'
 import Round from '@/resources/Round'
 import FormErrors from '@/util/FormErrors'
@@ -85,7 +85,7 @@ export default {
   },
   mounted () {
     this.loadGame().then(() => {
-      this.creator = Auth.user.id === this.game.creator.id
+      this.creator = Security.user.id === this.game.creator.id
     })
   }
 }

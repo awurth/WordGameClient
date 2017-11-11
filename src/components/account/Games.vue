@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Auth from '@/security'
+import Security from '@/security'
 import Game from '@/resources/Game'
 
 export default {
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     loadGames () {
-      Game.ofUser({ id: Auth.user.id, order: 'desc' }).then(response => {
+      Game.ofUser({ id: Security.user.id, order: 'desc' }).then(response => {
         this.games = response.body
       })
     },

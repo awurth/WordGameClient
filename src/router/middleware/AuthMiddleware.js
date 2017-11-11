@@ -1,7 +1,7 @@
-import Auth from '@/security'
+import Security from '@/security'
 
 export default function (to, from, next) {
-  if (!Auth.check()) {
+  if (!Security.check()) {
     next({ name: 'Login' })
   } else {
     next()

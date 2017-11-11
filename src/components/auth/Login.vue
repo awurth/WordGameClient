@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Auth from '@/security'
+import Security from '@/security'
 
 export default {
   name: 'Login',
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     login () {
-      Auth.login(this, this.credentials, { name: 'Home' })
+      Security.login(this, this.credentials, { name: 'Home' })
     }
   }
 }

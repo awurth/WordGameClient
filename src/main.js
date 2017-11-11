@@ -4,7 +4,7 @@ import 'semantic-ui/dist/semantic'
 import Vue from 'vue'
 import App from '@/App'
 import Router from '@/router'
-import Auth from '@/security'
+import Security from '@/security'
 
 import '@/resources'
 import '@/directives'
@@ -25,4 +25,4 @@ let initApp = () => {
   })
 }
 
-Auth.init().then(initApp, initApp)
+Security.init().then(initApp, initApp)

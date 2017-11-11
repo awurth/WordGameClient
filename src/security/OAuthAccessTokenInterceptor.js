@@ -1,7 +1,7 @@
-import Auth from '.'
+import Security from '.'
 
 export default function (request, next) {
-  let token = Auth.getAccessToken()
+  let token = Security.getAccessToken()
   if (token) {
     request.headers.set('Authorization', 'Bearer ' + token)
   }

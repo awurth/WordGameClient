@@ -28,25 +28,25 @@
 </template>
 
 <script>
-import Auth from '@/security'
+import Security from '@/security'
 import EventHub from '@/util/EventHub'
 
 export default {
   name: 'Topbar',
   data () {
     return {
-      user: Auth.user
+      user: Security.user
     }
   },
   methods: {
     logout () {
-      Auth.logout()
+      Security.logout()
       this.$router.push({ name: 'Home' })
     }
   },
   mounted () {
     EventHub.$on('auth', () => {
-      this.user = Auth.user
+      this.user = Security.user
     })
   }
 }
